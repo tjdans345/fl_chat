@@ -32,6 +32,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Exclude entire test/ directory
+#/lib/test/
+
 # Symbolication related
 app.*.symbols
 
