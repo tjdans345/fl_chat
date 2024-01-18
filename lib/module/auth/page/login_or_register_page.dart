@@ -1,7 +1,7 @@
 
-import 'package:fl_chat/login/page/login_page.dart';
-import 'package:fl_chat/login/page/register_page.dart';
-import 'package:fl_chat/login/provider/login_or_register_provider.dart';
+import 'package:fl_chat/module/login/page/login_page.dart';
+import 'package:fl_chat/module/login/page/register_page.dart';
+import 'package:fl_chat/module/login/provider/login_or_register_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

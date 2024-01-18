@@ -1,7 +1,7 @@
 
 import 'package:fl_chat/components/my_button.dart';
 import 'package:fl_chat/components/my_textfield.dart';
-import 'package:fl_chat/login/provider/login_or_register_provider.dart';
+import 'package:fl_chat/module/login/provider/login_or_register_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

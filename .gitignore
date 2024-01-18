@@ -46,6 +46,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# .env 파일
+*.env
+
 #**/firebase_options.dart
 #**/android/app/google-services.json
 #**/ios/Podfile

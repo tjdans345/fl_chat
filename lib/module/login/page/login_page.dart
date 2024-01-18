@@ -1,6 +1,7 @@
 import 'package:fl_chat/components/my_button.dart';
 import 'package:fl_chat/components/my_textfield.dart';
-import 'package:fl_chat/login/provider/login_or_register_provider.dart';
+import 'package:fl_chat/module/auth/page/auth_service.dart';
+import 'package:fl_chat/module/login/provider/login_or_register_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,7 +9,12 @@ class LoginPage extends ConsumerWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  final AuthService authService = AuthService();
+
   LoginPage({super.key});
+
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -46,7 +52,7 @@ class LoginPage extends ConsumerWidget {
             const SizedBox(
               height: 25,
             ),
-            MyButton(text: "로그인", onTap: onLogin,),
+            MyButton(text: "로그인", onTap: () => onLogin(context),),
             // 가입하러 가기
             const SizedBox(
               height: 25,
@@ -69,7 +75,23 @@ class LoginPage extends ConsumerWidget {
   }
 
   // login Method
-  void onLogin() {
+  void onLogin(BuildContext context) async {
+
+    final String email = _emailController.text;
+    final String password = _passwordController.text;
+    
+    try {
+      await authService.signInWithEmailPassword(email, password);
+    }
+
+    catch (error) {
+      showDialog(context: context, builder: (context) => AlertDialog(
+        title: Text(error.toString()),
+      ),);
+      
+    }
 
   }
+
+
 }
