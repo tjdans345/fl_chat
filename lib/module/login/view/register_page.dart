@@ -1,7 +1,6 @@
-
 import 'package:fl_chat/components/my_button.dart';
 import 'package:fl_chat/components/my_textfield.dart';
-import 'package:fl_chat/module/auth/page/auth_service.dart';
+import 'package:fl_chat/module/auth/service/auth_service.dart';
 import 'package:fl_chat/module/login/provider/login_or_register_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,7 +11,6 @@ class RegisterPage extends ConsumerWidget {
   final TextEditingController _confirmPasswordController = TextEditingController();
   RegisterPage({super.key});
   final AuthService _authService = AuthService();
-
 
   /// onRegister Method
   void onRegister(BuildContext context) {
@@ -25,6 +23,12 @@ class RegisterPage extends ConsumerWidget {
           title: Text(error.toString()),
         ),);
       }
+    }
+    // 패스워드 일치하지 않을 때
+    else {
+      showDialog(context: context, builder: (context) => AlertDialog(
+        title: Text("비밀번호가 일치하지 않습니다. 비밀번호 확인란을 다시 입력하여 주세요."),
+      ),);
     }
 
   }

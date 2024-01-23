@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fl_chat/firebase_options.dart';
-import 'package:fl_chat/module/auth/page/auth_gate.dart';
+import 'package:fl_chat/module/auth/view/auth_gate_page.dart';
 import 'package:fl_chat/module/thmes/light_model.dart';
 import 'package:fl_chat/utils/stringUtil.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const AuthGate(),
+      home: const AuthGatePage(),
       theme: lightMode,
       // 클래스로 그룹화 시킨 방법
       // theme: ThemeConstants.lightMode,

@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fl_chat/module/auth/page/login_or_register_page.dart';
+import 'package:fl_chat/module/auth/view/login_or_register_page.dart';
 import 'package:fl_chat/module/home/home_page.dart';
 import 'package:flutter/material.dart';
 
-class AuthGate extends StatelessWidget {
-  const AuthGate({super.key});
+class AuthGatePage extends StatelessWidget {
+  const AuthGatePage({super.key});
 
   @override
   Widget build(BuildContext context) {
