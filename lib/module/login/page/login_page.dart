@@ -6,15 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginPage extends ConsumerWidget {
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   final AuthService authService = AuthService();
 
   LoginPage({super.key});
-
-
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,14 +42,26 @@ class LoginPage extends ConsumerWidget {
               height: 25,
             ),
             // 이메일 필드
-            MyTextField(hintText: "이메일", obscureText: false, controller: _emailController),
-            const SizedBox(height: 10,),
-            MyTextField(hintText: "비밀번호", obscureText: true, controller: _passwordController,),
+            MyTextField(
+                hintText: "이메일",
+                obscureText: false,
+                controller: _emailController),
+            const SizedBox(
+              height: 10,
+            ),
+            MyTextField(
+              hintText: "비밀번호",
+              obscureText: true,
+              controller: _passwordController,
+            ),
             // 로그인 버튼
             const SizedBox(
               height: 25,
             ),
-            MyButton(text: "로그인", onTap: () => onLogin(context),),
+            MyButton(
+              text: "로그인",
+              onTap: () => onLogin(context),
+            ),
             // 가입하러 가기
             const SizedBox(
               height: 25,
@@ -60,12 +69,20 @@ class LoginPage extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("회원이 아니세요?", style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+                Text(
+                  "회원이 아니세요?",
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.primary),
+                ),
                 GestureDetector(
                     onTap: () {
-                      ref.read(loginOrRegisterProvider.notifier).state = LoginOrRegisterState.register;
+                      ref.read(loginOrRegisterProvider.notifier).state =
+                          LoginOrRegisterState.register;
                     },
-                    child: const Text(" 지금 바로 가입하기", style: TextStyle(fontWeight: FontWeight.bold),)),
+                    child: const Text(
+                      " 지금 바로 가입하기",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
               ],
             ),
           ],
@@ -75,23 +92,19 @@ class LoginPage extends ConsumerWidget {
   }
 
   // login Method
-  void onLogin(BuildContext context) async {
-
+  void onLogin(BuildContext context) {
     final String email = _emailController.text;
     final String password = _passwordController.text;
-    
+
     try {
-      await authService.signInWithEmailPassword(email, password);
+      authService.signInWithEmailPassword(email, password);
+    } catch (error) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(error.toString()),
+        ),
+      );
     }
-
-    catch (error) {
-      showDialog(context: context, builder: (context) => AlertDialog(
-        title: Text(error.toString()),
-      ),);
-      
-    }
-
   }
-
-
 }

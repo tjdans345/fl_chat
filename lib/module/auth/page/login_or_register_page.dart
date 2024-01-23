@@ -14,6 +14,8 @@ class LoginOrRegisterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print("리빌드영 2222222");
+
     final loginOrRegisterState = ref.watch(loginOrRegisterProvider);
 
     if(LoginOrRegisterState.login == loginOrRegisterState) {

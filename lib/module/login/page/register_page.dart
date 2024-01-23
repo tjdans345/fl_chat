@@ -1,6 +1,7 @@
 
 import 'package:fl_chat/components/my_button.dart';
 import 'package:fl_chat/components/my_textfield.dart';
+import 'package:fl_chat/module/auth/page/auth_service.dart';
 import 'package:fl_chat/module/login/provider/login_or_register_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,8 +10,24 @@ class RegisterPage extends ConsumerWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
-
   RegisterPage({super.key});
+  final AuthService _authService = AuthService();
+
+
+  /// onRegister Method
+  void onRegister(BuildContext context) {
+
+    if(_passwordController.text == _confirmPasswordController.text) {
+      try {
+        _authService.signUpWithEmailPassword(_emailController.text, _passwordController.text);
+      } catch (error) {
+        showDialog(context: context, builder: (context) => AlertDialog(
+          title: Text(error.toString()),
+        ),);
+      }
+    }
+
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -50,7 +67,7 @@ class RegisterPage extends ConsumerWidget {
             const SizedBox(
               height: 25,
             ),
-            MyButton(text: "회원 가입", onTap: onRegister,),
+            MyButton(text: "회원 가입", onTap: () => onRegister(context),),
             // 가입하러 가기
             const SizedBox(
               height: 25,
@@ -72,7 +89,4 @@ class RegisterPage extends ConsumerWidget {
     );
   }
 
-  void onRegister() {
-
-  }
 }

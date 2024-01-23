@@ -8,13 +8,14 @@ class AuthGate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       // Stream 빌더를 이용하여 로그인 이후 페이지 분기 처리
       body: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if(snapshot.hasData) {
-            return const HomePage();
+            return HomePage();
           } else {
             return const LoginOrRegisterPage();
           }
