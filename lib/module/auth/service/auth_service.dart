@@ -9,11 +9,8 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
 
-
-
   /// original Data -> encrypt Data
   String _getEncryptedData(password) => StringUtil.encryptedData(password);
-
 
   /// sign in
   Future<UserCredential> signInWithEmailPassword(String email, password) async {
@@ -46,15 +43,11 @@ class AuthService {
         "email" : email
       });
 
-
       return userCredential;
     } on FirebaseAuthException catch (e) {
         throw Exception(e.code);
     }
   }
-
-
-
 
   // sign out
   Future<void> signOut() async {

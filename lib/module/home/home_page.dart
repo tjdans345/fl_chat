@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "홈 페이지",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
       drawer: MyDrawer(),
