@@ -25,7 +25,7 @@ class AuthService {
       // 실제 개발 단계 에서는 이런 방법 사용 하지 말고 빼야함
       _fireStore.collection("Users").doc(userCredential.user!.uid).set({
         "uid" : userCredential.user!.uid,
-        "email" : email
+        "email" : email,
       });
       return userCredential;
     } on FirebaseAuthException catch (error) {
