@@ -33,6 +33,7 @@ class AuthService {
 
 
   /// sign up Method Ver.1
+  /// Git Updates were rejected because the tip of your current branch is behind 해결 Test
   Future<UserCredential> signUpWithEmailPassword(String email, password) async {
     try {
       final encryptPassword = _getEncryptedData(password);
