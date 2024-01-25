@@ -40,7 +40,7 @@ class AuthService {
 
       _fireStore.collection("Users").doc(userCredential.user!.uid).set({
         "uid" : userCredential.user!.uid,
-        "email" : email
+        "email" : email,
       });
 
       return userCredential;
