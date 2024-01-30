@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 @immutable
 class AuthService {
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
 
@@ -49,10 +50,8 @@ class AuthService {
     return await _auth.signOut();
   }
 
-
-
-
   // errors
+
 
 
 
