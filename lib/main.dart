@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fl_chat/firebase_options.dart';
 import 'package:fl_chat/module/auth/view/auth_gate_page.dart';
-import 'package:fl_chat/module/thmes/light_model.dart';
+import 'package:fl_chat/module/themes/light_model.dart';
 import 'package:fl_chat/utils/stringUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
