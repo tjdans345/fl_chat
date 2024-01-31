@@ -32,7 +32,7 @@ class MyDrawer extends StatelessWidget {
                         .of(context)
                         .colorScheme
                         .primary,
-                    size: 40,
+                    size: 40, // 사이즈는 추후 변동 가능성 있음
                   )),
               // home list title
               Padding(

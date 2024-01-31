@@ -10,10 +10,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // https://www.youtube.com/watch?v=5xU5WH2kEc0&t=1016s
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await dotenv.load(fileName: ".env");
-
   runApp(const ProviderScope(child: MyApp()));
 }
 
