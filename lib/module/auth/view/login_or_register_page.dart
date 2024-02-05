@@ -11,10 +11,13 @@ class LoginOrRegisterPage extends ConsumerWidget {
 
   // initially, show login page
 
+  // after login logic
+
+  // after register logic
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print("리빌드영 2222222");
 
     final loginOrRegisterState = ref.watch(loginOrRegisterProvider);
 
