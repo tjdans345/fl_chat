@@ -41,9 +41,9 @@ class HomePage extends StatelessWidget {
         }
 
         return ListView(
-          children:
-            snapshot.data!.map<Widget>(
-              (userData) => _buildUserListItem(userData, context)).toList(),
+          children: snapshot.data!
+              .map<Widget>((userData) => _buildUserListItem(userData, context))
+              .toList(),
         );
 
         // return list view
@@ -51,10 +51,22 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildUserListItem(Map<String, dynamic> userData, BuildContext context) {
+  /// UserTile 위젯 create Method
+  Widget _buildUserListItem(
+      Map<String, dynamic> userData, BuildContext context) {
     final userEmail = userData["email"];
-    return UserTile(text: userEmail, onTap: () {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatPage(receiverEmail: userEmail),));
-    },);
+    if (userEmail != _authService.getCurrentUser()!.email) {
+      return UserTile(
+        userEmail: userEmail,
+        onTap: () {
+          throw Exception("This is a global exception!");
+          // Navigator.of(context).push(MaterialPageRoute(
+          //   builder: (context) => ChatPage(receiverEmail: userEmail),
+          // ));
+        },
+      );
+    } else {
+      return Container();
+    }
   }
 }

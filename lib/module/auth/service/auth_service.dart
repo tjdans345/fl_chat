@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fl_chat/utils/stringUtil.dart';
+import 'package:fl_chat/utils/string_util.dart';
 import 'package:flutter/material.dart';
 
 @immutable
@@ -11,6 +11,11 @@ class AuthService {
 
   /// original Data -> encrypt Data
   String _getEncryptedData(password) => StringUtil.encryptedData(password);
+
+  /// get current user
+  User? getCurrentUser() {
+    return _auth.currentUser;
+  }
 
   /// sign in
   Future<UserCredential> signInWithEmailPassword(String email, password) async {
@@ -34,11 +39,14 @@ class AuthService {
   Future<UserCredential> signUpWithEmailPassword(String email, password) async {
     try {
       final encryptPassword = _getEncryptedData(password);
+
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: encryptPassword);
+
       _fireStore.collection("Users").doc(userCredential.user!.uid).set({
         "uid" : userCredential.user!.uid,
         "email" : email,
       });
+
       return userCredential;
     } on FirebaseAuthException catch (e) {
         throw Exception(e.code);

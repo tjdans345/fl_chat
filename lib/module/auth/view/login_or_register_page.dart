@@ -8,13 +8,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class LoginOrRegisterPage extends ConsumerWidget {
   const LoginOrRegisterPage({super.key});
 
-
   // initially, show login page
 
   // after login logic
 
   // after register logic
-
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,4 +25,9 @@ class LoginOrRegisterPage extends ConsumerWidget {
       return RegisterPage();
     }
   }
+
+
+
+
+
 }
