@@ -2,12 +2,12 @@
 class GenericBuilder<T> {
   Map<String, dynamic> _properties = {};
 
-  GenericBuilder<T> setProperty(String key, dynamic value) {
-    _properties[key] = value;
+  GenericBuilder<T> setField(String fieldName, dynamic value) {
+    _properties[fieldName] = value;
     return this;
   }
 
-  T build(Function(Map<String, dynamic> properties) buildFunction) {
-    return buildFunction(_properties);
+  T build() {
+    return _properties as T;
   }
 }
