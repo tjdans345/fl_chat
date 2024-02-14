@@ -59,7 +59,6 @@ class HomePage extends StatelessWidget {
   Widget _buildUserListItem(
       Map<String, dynamic> userData, BuildContext context) {
     final userEmail = userData["email"];
-
     if (userEmail != _authService.getCurrentUser()!.email) {
       return UserTile(
         userEmail: userEmail,
