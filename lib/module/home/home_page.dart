@@ -1,9 +1,5 @@
 import 'package:fl_chat/components/my_drawer.dart';
 import 'package:fl_chat/components/user_tile.dart';
-import 'package:fl_chat/config/generic_builder.dart';
-import 'package:fl_chat/exception/custom_exception.dart';
-import 'package:fl_chat/exception/enum/custom_exception_field.dart';
-import 'package:fl_chat/exception/exception_handler.dart';
 import 'package:fl_chat/module/auth/service/auth_service.dart';
 import 'package:fl_chat/module/chat/service/chat_service.dart';
 import 'package:fl_chat/module/chat/view/chat_page.dart';
@@ -71,11 +67,14 @@ class HomePage extends StatelessWidget {
           //     .build();
           // throw customException;
 
+
+
+          // print("????????? ${userData["email"]} / ${userData["uid"]}");
           Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => ChatPage(
                     receiverEmail: userData["email"],
-                    receiverID: userData["id"]),
+                    receiverID: userData["uid"]),
               ));
         },
       );

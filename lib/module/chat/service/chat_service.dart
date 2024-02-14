@@ -31,6 +31,7 @@ class ChatService {
         message: message,
         timestamp: timestamp);
 
+    print("currentUserId : $currentUserId / receiverID : $receiverID");
     // construct chat room ID for the two users (sorted to ensure uniqueness)
     List<String> ids = [currentUserId, receiverID];
     ids.sort(); //sort the ids (this ensure the chatroomID is the same for any 2 people)
