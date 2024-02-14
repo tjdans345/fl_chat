@@ -1,13 +1,19 @@
 
-class GenericBuilder<T> {
-  Map<String, dynamic> _properties = {};
+import 'dart:convert';
 
-  GenericBuilder<T> setField(String fieldName, dynamic value) {
-    _properties[fieldName] = value;
+import 'package:fl_chat/exception/custom_exception.dart';
+
+class GenericBuilder<T> {
+  final T _instance;
+
+  GenericBuilder(this._instance);
+
+  GenericBuilder<T> setField(dynamic Function(T) fieldSetter) {
+    fieldSetter(_instance);
     return this;
   }
 
   T build() {
-    return _properties as T;
+    return _instance;
   }
 }

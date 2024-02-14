@@ -1,5 +1,9 @@
 import 'package:fl_chat/components/my_drawer.dart';
 import 'package:fl_chat/components/user_tile.dart';
+import 'package:fl_chat/config/generic_builder.dart';
+import 'package:fl_chat/exception/custom_exception.dart';
+import 'package:fl_chat/exception/enum/custom_exception_field.dart';
+import 'package:fl_chat/exception/exception_handler.dart';
 import 'package:fl_chat/module/auth/service/auth_service.dart';
 import 'package:fl_chat/module/chat/service/chat_service.dart';
 import 'package:fl_chat/module/chat/view/chat_page.dart';
@@ -59,10 +63,13 @@ class HomePage extends StatelessWidget {
       return UserTile(
         userEmail: userEmail,
         onTap: () {
-          throw Exception("This is a global exception!");
-          // Navigator.of(context).push(MaterialPageRoute(
-          //   builder: (context) => ChatPage(receiverEmail: userEmail),
-          // ));
+          CustomException customException = GenericBuilder<CustomException>(CustomException(errorType: "", errorMessage: ""))
+              .setField((customException) =>
+                  customException.errorType = ExceptionType.home.toString())
+              .setField(
+                  (customException) => customException.errorMessage = "Test!!!")
+              .build();
+          throw customException;
         },
       );
     } else {

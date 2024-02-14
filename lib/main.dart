@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fl_chat/exception/exception_handler.dart';
 import 'package:fl_chat/firebase_options.dart';
 import 'package:fl_chat/module/auth/view/auth_gate_page.dart';
 import 'package:fl_chat/module/themes/light_model.dart';
@@ -13,10 +14,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await dotenv.load(fileName: ".env");
 
-  FlutterError.onError = (FlutterErrorDetails details) {
-    // 여기에 원하는 글로벌 에러 처리 로직을 추가
-    print('Global Error: ${details.exception}');
-  };
+  FlutterError.onError = ExceptionHandler.handleError;
 
   runApp(const ProviderScope(child: MyApp()));
 }
