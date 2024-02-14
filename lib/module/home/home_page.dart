@@ -63,13 +63,13 @@ class HomePage extends StatelessWidget {
       return UserTile(
         userEmail: userEmail,
         onTap: () {
-          CustomException customException = GenericBuilder<CustomException>(CustomException(errorType: "", errorMessage: ""))
-              .setField((customException) =>
-                  customException.errorType = ExceptionType.home.toString())
-              .setField(
-                  (customException) => customException.errorMessage = "Test!!!")
-              .build();
-          throw customException;
+          // CustomException customException = GenericBuilder<CustomException>(CustomException(errorType: "", errorMessage: ""))
+          //     .setField((customException) =>
+          //         customException.errorType = ExceptionType.home.toString())
+          //     .setField(
+          //         (customException) => customException.errorMessage = "Test!!!")
+          //     .build();
+          // throw customException;
         },
       );
     } else {
