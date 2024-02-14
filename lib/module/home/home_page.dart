@@ -70,6 +70,13 @@ class HomePage extends StatelessWidget {
           //         (customException) => customException.errorMessage = "Test!!!")
           //     .build();
           // throw customException;
+
+          Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ChatPage(
+                    receiverEmail: userData["email"],
+                    receiverID: userData["id"]),
+              ));
         },
       );
     } else {

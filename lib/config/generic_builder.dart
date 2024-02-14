@@ -1,8 +1,4 @@
 
-import 'dart:convert';
-
-import 'package:fl_chat/exception/custom_exception.dart';
-
 class GenericBuilder<T> {
   final T _instance;
 
