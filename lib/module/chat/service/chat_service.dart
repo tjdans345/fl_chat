@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fl_chat/exception/custom_exception.dart';
 import 'package:fl_chat/module/chat/model/message_model.dart';
 
 class ChatService {
