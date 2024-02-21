@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fl_chat/components/chat_bubble.dart';
 import 'package:fl_chat/components/my_textfield.dart';
 import 'package:fl_chat/module/auth/service/auth_service.dart';
 import 'package:fl_chat/module/chat/service/chat_service.dart';
@@ -26,8 +27,15 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: Text(receiverEmail),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.grey,
+        elevation: 0,
+        title: Text(
+          "홈 페이지",
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
       ),
       body: Column(
         children: [
@@ -71,21 +79,40 @@ class ChatPage extends StatelessWidget {
   // build Message Item
   Widget _buildMessageItem(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-    return Text(data["message"]);
+
+    bool isCurrentUser = data["senderID"] == _authService.getCurrentUser()!.uid;
+
+    var alignment = isCurrentUser ? Alignment.centerRight : Alignment.bottomLeft;
+
+    return Container(alignment: alignment, child: Column(
+      crossAxisAlignment: isCurrentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+      children: [
+        ChatBubble(message: data["message"], isCurrentUser: isCurrentUser)
+      ],
+    ));
   }
 
   Widget _buildUserInput() {
-    return Row(
-      children: [
-        // textFiled should take up most of the space
-        Expanded(
-            child: MyTextField(
-          controller: _messageController,
-              hintText: "Type a Message",
-              obscureText: false,
-        )),
-        IconButton(onPressed: sendMessage, icon: const Icon(Icons.arrow_upward)),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 50.0),
+      child: Row(
+        children: [
+          // textFiled should take up most of the space
+          Expanded(
+              child: MyTextField(
+            controller: _messageController,
+                hintText: "Type a Message",
+                obscureText: false,
+          )),
+          Container(
+              decoration: const BoxDecoration(
+                color: Colors.green,
+                shape: BoxShape.circle,
+              ),
+              margin: const EdgeInsets.only(right: 25.0),
+              child: IconButton(onPressed: sendMessage, icon: const Icon(Icons.arrow_upward, color: Colors.white,))),
+        ],
+      ),
     );
   }
 }

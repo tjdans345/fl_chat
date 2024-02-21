@@ -1,7 +1,7 @@
 
 import 'package:fl_chat/exception/custom_exception.dart';
 import 'package:fl_chat/exception/enum/custom_exception_field.dart';
-import 'package:fl_chat/module/home/home_page.dart';
+import 'package:fl_chat/module/home/view/home_page.dart';
 import 'package:fl_chat/module/login/view/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

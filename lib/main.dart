@@ -3,6 +3,7 @@ import 'package:fl_chat/exception/exception_handler.dart';
 import 'package:fl_chat/firebase_options.dart';
 import 'package:fl_chat/module/auth/view/auth_gate_page.dart';
 import 'package:fl_chat/module/themes/light_model.dart';
+import 'package:fl_chat/module/themes/provider/theme_provider.dart';
 import 'package:fl_chat/utils/string_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -19,16 +20,18 @@ void main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
+
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const AuthGatePage(),
-      theme: lightMode,
+      theme: ref.watch(themeState),
       // 클래스로 그룹화 시킨 방법
       // theme: ThemeConstants.lightMode,
     );
