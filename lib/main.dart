@@ -26,12 +26,11 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-
+    final theme = ref.watch(themeTypeProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const AuthGatePage(),
-      theme: ref.watch(themeState),
+      theme: theme.themeData,
       // 클래스로 그룹화 시킨 방법
       // theme: ThemeConstants.lightMode,
     );

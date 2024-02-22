@@ -8,14 +8,14 @@ class SettingPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeType = ref.watch(themeTypeProvider);
+    final theme = ref.watch(themeTypeProvider);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         backgroundColor: Colors.white,
         foregroundColor: Colors.grey,
         elevation: 0,
-        title: Text(
+        title: const Text(
           "세팅 페이지",
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
@@ -31,11 +31,14 @@ class SettingPage extends ConsumerWidget {
           children: [
             Text("Dark Mode"),
             CupertinoSwitch(
-              value: themeType == ThemeType.dark,
+              value: theme.themeType == ThemeType.dark,
               onChanged: (value) {
                 ref.read(themeTypeProvider.notifier).toggleThemeMode();
               },
-            )
+            ),
+            // ElevatedButton(onPressed: () {
+            //   ref.read(themeTypeProvider.notifier).toggleThemeMode();
+            // }, child: Text("Dark Mode"))
           ],
         ),
       ),

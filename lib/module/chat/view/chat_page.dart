@@ -50,18 +50,13 @@ class ChatPage extends StatelessWidget {
 
   Widget _buildMessageList() {
     String senderID = _authService.getCurrentUser()!.uid;
-    print("receiverID 222 : $receiverID / senderID 222 : $senderID");
     return StreamBuilder<QuerySnapshot>(
       stream: _chatService.getMessageList(receiverID, senderID),
       builder: (context, snapshot) {
-
-        print("리빌드용");
-
         /// State = Error
         if (snapshot.hasError) {
           return Text("Error");
         }
-
         /// State = Loading
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Text("Loading...");
